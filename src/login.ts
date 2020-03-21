@@ -595,14 +595,16 @@ export const login = {
           `--auth-negotiate-delegate-whitelist=${AZURE_AD_SSO}`
         );
       if (rememberMe) {
+        const winuserdata = paths_1.paths.chromium.replace('/mnt/c','C:').replace(/\//g,"\\");
         await mkdirpPromise(paths.chromium);
-        args.push(`--user-data-dir=${paths.chromium}`);
+        args.push(`--user-data-dir=${winuserdata}`);
       }
       const ignoreDefaultArgs = noDisableExtensions
         ? ["--disable-extensions"]
         : [];
 
       browser = await puppeteer.launch({
+        executablePath: 'chrome.exe',
         headless,
         args,
         ignoreDefaultArgs
