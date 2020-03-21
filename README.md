@@ -2,9 +2,13 @@
 
 If your organization uses [Azure Active Directory](https://azure.microsoft.com) to provide SSO login to the AWS console, then there is no easy way to log in on the command line or to use the [AWS CLI](https://aws.amazon.com/cli/). This tool fixes that. It lets you use the normal Azure AD login (including MFA) from a command line to create a federated AWS session and places the temporary credentials in the proper place for the AWS CLI and SDKs.
 
+This fork is hacked to work for WSL.  It uses the Windows Chrome executable instead of a linux one.  Because of this, the location of your chrome.exe must be added to your path environment variable.
+
 ## Installation
 
 ### Linux
+
+First, make sure the location of your chrome.exe is in your path -- this will get passed on to WSL automatically.  The default location is C:\Program Files (x86)\Google\Chrome\Application.  You can do this by editing your environment variables in Windows.
 
 In Linux you can either install for all users or just the current user. In either case, you must first install [Node.js](https://nodejs.org/) v7.6.0 or higher and any [puppeteer dependencies](https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#chrome-headless-doesnt-launch). Then follow the appropriate instructions.
 
